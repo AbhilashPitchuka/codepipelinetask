@@ -1,14 +1,15 @@
-version: 2.0
+---
+-version: 2.0
 
-phases: 
-  pre_build:
-    commands:
-      - echo installing npm dependencies
-      - npm install
-  build:
-    commands:
-      - npm build
-artifacts:
-  files:
-    - "**/*"
-    base-directory: build
+ phases: 
+   pre_build:
+     commands:
+       - echo installing npm dependencies
+       - npm install
+   build:
+     commands:
+       - npm build
+-artifacts:
+   files:
+     - "**/*"
+     base-directory: build
