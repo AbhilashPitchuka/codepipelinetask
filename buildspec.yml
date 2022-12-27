@@ -1,9 +1,5 @@
 version: 0.2
 phases:
-  install:
-    commands:
-      - nodejs: 16
-        sudo yum install nodejs -y
   pre_build:
     commands:
       - npm install
