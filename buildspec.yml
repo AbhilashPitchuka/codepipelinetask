@@ -2,14 +2,14 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - npm install -f
+      - npm install
   build:
    commands:
      - npm build
   post_build:
     commands:
       - aws s3 cp --recursive --acl public-read ./build s3://$BUCKET_NAME/
-      - aws cloudfront create-invalidation — distribution-id $DIST_ID — paths '/*'
+      - aws cloudfront create-invalidation --distribution-id $DIST_ID --paths '/*'
 artifacts:
   files:
    - '**/*'
