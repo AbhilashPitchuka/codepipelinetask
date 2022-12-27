@@ -1,14 +1,16 @@
----
--version: 2.0
-phases: 
-   pre_build:
-     commands:
-       - echo installing npm dependencies
-       - npm install
-   build:
-     commands:
-       - npm build
--artifacts:
-   files:
+version: 2.0
+phases:
+  pre_build:
+    commands:
+      - npm install
+  build:
+   commands:
+     - npm build
+  post_build:
+    commands:
+      - aws s3 cp --recursive --acl public-read ./build s3://$BUCKET_NAME/
+      - aws cloudfront create-invalidation — distribution-id $DIST_ID — paths '/*'
+artifacts:
+ files:
    - "**/*"
-   base-directory: build
+  base-directory: build
