@@ -1,4 +1,4 @@
-version: 2.0
+version: 0.2
 phases:
   pre_build:
     commands:
@@ -11,6 +11,6 @@ phases:
       - aws s3 cp --recursive --acl public-read ./build s3://$BUCKET_NAME/
       - aws cloudfront create-invalidation — distribution-id $DIST_ID — paths '/*'
 artifacts:
- files:
+  files:
    - '**/*'
- base-directory: build
+  base-directory: build
