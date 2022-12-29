@@ -6,7 +6,6 @@ phases:
     commands:
       - npm install yarn
       - yarn
-      - yarn add eslint-config-react-app
   build:
     commands:
       - yarn build
