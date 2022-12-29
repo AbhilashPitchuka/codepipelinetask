@@ -5,10 +5,10 @@ phases:
       nodejs: 16
   pre_build:
     commands:
-      - yarn install 
+      - npm install 
   build:
     commands:
-      - yarn run build
+      - npm build
   post_build:
     commands:
       - aws s3 cp --recursive --acl public-read ./build s3://$BUCKET_NAME/
